@@ -1,6 +1,6 @@
 # Par prog zh cheat sheet
 
-###### Nincs garancia arra, hogy minden amit ide írtam fedi a valóságot, elképzelhető, hogy elírtam valamit, ez esetben kérlek kommentelj a kódba giten, hogy mire kellene kijavítan.
+###### Nincs garancia arra, hogy minden amit ide írtam fedi a valóságot, elképzelhető, hogy elírtam valamit (vagy szimplán b.romságot írtam), ez esetben kérlek kommentelj a kódba giten, hogy mire kellene kijavítan.
 
 ### **1** sokprocesszoros rendszerek létrehozásának okai, alkalmazási területek, ahol a nagy számítási teljesítménye, nagy memória méret fontos
 
@@ -182,4 +182,55 @@
         munkát a dolgozóknak, az eredményt üzenetként kapja
         vissza. Dinamikus, mert a munka igény szerint
         osztható ki.
+        
+### **8** a kritikus szakasz fogalma
+
+        Egy kód kritikus szakaszán azt értjuk, amikor az 
+        utasításokat kölcsönös kizárással kell végrehajtani
+        miközben figyelni kell más kódrészek kritikus szakaszaira,
+        hogy a megosztott változókhoz hozzá férhessünk
+
+### **9** az atomi művelet fogalma 
+
+        Egy párhuzamos process által végzett olyan műveletet értünk,
+        amely nem szakítható meg más művelettel.
+        Amíg ez dolgozik, addig más process nem juthat
+        az adott adathoz.
+        Az atomi művelet oszthatatlan legkisebb egység.
+
+### **10** a kölcsönös kizárás fogalma, alkalmazásának célja, megvalósítási lehetőségei (busy waiting, szemafor, monitor)
+
+* **Semaphore:**
+
+        Definiálunk egy logikai változót, ami megmondja,
+        hogy egy adott szál beléphet-e a kritikus
+        szakaszba. Ha beléphet, a szál beállítja az értéket
+        hamisra, kilépéskor visszaállítja igazra.
+
+* **Busy waiting:**
+
+        Egy process akkor van ebben az állapotban, ha egy változó állapotának a megváltoztatására vár.
+        Várhat rendszer erőforrásra, blokkol process-listában van.
+        Nem túl hatékony, CPU időt pazarol
+
+* **Monitor**
+
+        A monitor egy olyan struktúra, ami összegyűjti
+        a kritikus szakaszokat egy modulba.
+        Monitort használó processeknek így nincs már többé
+        kritukus szakasza.
+        
+        Eljáráshívásokk lesznek a monitorban.
+        
+        Nem elérhető a monitoron kívülről.
+
+        Megosztott adatoknak a monitorban kell(ene) lennie,
+        így csak az eljáráshívások érhetik el.
+
+        Implicit kölcsönös kizárást ad.
+        Egyszerre csak egy eljáráshívás van végrehajtva.
+        
+        Azon processek amelyek nem fértek hozzá a monitorhoz,
+        autómatikusan a várólistájára kerülnek
+
 
