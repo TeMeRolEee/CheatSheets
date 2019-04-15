@@ -1,5 +1,7 @@
 # Par prog zh cheat sheet
 
+###### Nincs garancia arra, hogy minden amit ide írtam fedi a valóságot, elképzelhető, hogy elírtam valamit, ez esetben kérlek kommentelj a kódba giten, hogy mire kellene kijavítan.
+
 ### **1** sokprocesszoros rendszerek létrehozásának okai, alkalmazási területek, ahol a nagy számítási teljesítménye, nagy memória méret fontos
 
         A 2000-es évek közepéig a processzorok fejlődése
@@ -122,4 +124,62 @@
             - Bináris fa
             - hyper-kocka
 
+### **5** szuperszámítógépek jelenlegi számítási teljesítmény tartománya, várható továbbfejlődési irányok
+
+1. Cray-1 80-180 MFLOPS
+2. Numerical Wind Tunnel 124 GFLOPS
+3. Intel ASCI Red 1.8 TFLOPS
+4. K computer 10.5 PFLOPS
+5. Cray Titan 17 PFLOPS
+6. Tianhe-2 34 PFLOPS
+7. Summit 143.5 PFLOPS
+
+
+### **6** Process fogalma
+
+        A folyamat egy olyan szekvenciális programkód aminek
+        van saját adata és állapota.
+        
+        Párhuzamos programozásban képesnek kell lennünk menedzselni a folyamatokat (processeket),
+        szinkronizálni őket, ha szükséges.
+        
+        Az alap ötlet az lenne, hogy minden folyamatot
+        szétosztunk különböző részekre amiket párhuzamosan
+        futtathatunk.
+
+### **7** adat- és algoritmikus párhuzamosítás elve, példákkal
+
+* **Adatpárhuzamosítás:**
+
+        Az adathalmaz, amin műveletet el kell végezni,
+        felosztjuk a processzorok között.
+        
+        Példa:
+
+            Mátrixszorzásnál részeire bontjuk
+            a mátrixot és minden
+            processzor csak egy kis részen végzi el a
+            szórzást.
+
+* **Algoritmuspárhuzamosítás:**
+
+        A műveletet osztjuk fel.
+
+        Példa:
+
+            Komplex képletet felbonytjuk részekre
+
+* **Pipeline:**
+
+        Van egy munkadarab, amin minden processzor végez
+        valamilyen műveletet. Ha az egyik processzor
+        végzett, továbbadja a következőnek.
+
+* **Farm:**
+
+        A problémát kisebb egységekre felosztják, mindig van
+        egy vezérlő, ami kiosztja a
+        munkát a dolgozóknak, az eredményt üzenetként kapja
+        vissza. Dinamikus, mert a munka igény szerint
+        osztható ki.
 
