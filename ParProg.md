@@ -239,6 +239,25 @@
 
 ### **12** a OpenMP programozási modell alapelveinek bemutatása, direktívák, a fordítóprogram szerepe, párhuzamos régió, stb.
 
+    Nem egyesével kell a szálakat létrehozni, csak azt
+    mondjuk meg, hogy mennyi kell és hogy a
+    program melyik része legyen párhuzamos.
+
+```#pragma omp parallel for (default none ) private([belső változók]) shared([megosztottváltozók])```
+    
+    Az ez után lévő utasítás tömb lesz párhuzamos. (sima
+    kapcsos zárójel, if, ciklusok)
+    Megadható feltétel is (#pragma omp parallel if ...), ha
+    ez nem teljesül, a kód szekvenciális lesz.
+    Nowait: A párhuzamos rész végén nem lesz szinkronizáció.
+    
+**Fontosabb metódusok:**
+
+```omp_get_num_proc()``` – processzorok számának lekérése
+
+```omp_get_num_threads()``` – szálak számának lekérése
+
+```omp_get_thread_num()``` – aktuális szám lekérése
 
 ### **13** a Producer-Consumer probléma ismertetése elvi szinten, a helyes működéshez szükséges szinkronizációs megoldások
 
