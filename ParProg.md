@@ -234,3 +234,46 @@
         autómatikusan a várólistájára kerülnek
 
 
+### **11** a feltételes szinkronizáció jelentése, megvalósítási lehetőségei
+
+
+### **12** a OpenMP programozási modell alapelveinek bemutatása, direktívák, a fordítóprogram szerepe, párhuzamos régió, stb.
+
+
+### **13** a Producer-Consumer probléma ismertetése elvi szinten, a helyes működéshez szükséges szinkronizációs megoldások
+
+```
+ProducerConsumer
+{
+    // Multiple Producer Consumer problem with single shared
+    // buffer buff
+    // Solution uses split binary semaphores
+    int buff;
+    semaphore empty = 1;
+    semaphore full = 0; // binary semaphores
+    process Producer
+    {
+        while (true) {
+            // generate data x
+            P(empty); // wait until buffer empty
+            buff = x;
+            V(full); // signal full
+        }
+    }
+    process Consumer
+    {
+        while (true) {
+            P(full); // wait until buffer full
+            y = buff;
+            V(empty); // signal empty
+            // consume data y
+        }
+
+    }
+}
+```
+
+### **14** a teljesítmény jellemzésének mérőszámai, párhuzamos futási idő, gyorsulás, hatékonyság. Képletek, ezek kapcsolata, illetve melyik mit mond el a rendszer működéséről, mire használhatók?
+
+
+
