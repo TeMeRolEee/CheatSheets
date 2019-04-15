@@ -28,6 +28,15 @@
     (pl. Ethernet). Munkaállomások összeköttetésére ezt
     használják.
 
+    Előny:
+
+        - Nagy teljesítményű munkaállomások kis/nulla plusz
+            költséggel elérhetőek lehetnek
+        - A legújabb generációs processzorokkal rendelkeznek 
+           -> nagy teljesítmény
+        - Alacsonyabb teljesítményű szuper-számítógépek
+            teljesítményével vetekszik.
+
 **Közös memóriájú rendszerek:**
 
     Egy többmagos processzorban alapvetően minden mag egy
@@ -57,4 +66,60 @@
 
 ### **3** a memória modell hatása a programozási modellre
 
+    Ha két mag egyszerre beolvas egy változót a
+    rendszermemóriából a
+    saját cache-ébe és az egyik felülírja az értékét, a másik
+    erről nem tud és még a régi értékkel
+    dolgozik, innentől a változó értéke a hibás lesz.
     
+    Memória koherenciára figyelni kell.
+    
+    Közös (shared variables) változókat nem tárolunk cacheben.
+    
+    Semaphor
+
+### **4** közös memóriájú párhuzamos számítógépek összeköttetés rendszerei, lehetséges megoldások, azok előnyei és hátrányai
+
+* **Dinamikus összeköttetések:**
+
+    * Crossbar
+
+            A processzorok és memóriák közötti utat rács-szerűen
+            behuzalozzuk és a kereszteződésekbe egy
+            kapcsolót teszünk. P párhuzamosítás esetén P2
+            kapcsoló szükséges.
+
+    * Multistage network
+
+            Csak vizszintesen huzalozzuk be és inteligens kapcsolókat használunk.
+            Nem minden út elérhető egyidőben (hotspots)
+    
+    * Hierarchikus busz-rendszer
+
+* **Statikus összeköttetés:**
+
+        Pont-pont összeköttetés és egy processzor mindig
+        ugyanazokkal
+        van összekötve, a rendszer működésekor ez nem
+        változik.
+        Mindent mindennel össze lehetne kötni, ez nagyon
+        gyors adatátvitelt eredményez, hiszen
+        minden processzornak közvetlen szomszédja egy másik,
+        de sok processzornál már sok
+        csatlakozónak kell lennie, illetve bővítéskor le
+        kell cserélni az összeset olyanra, aminek több
+        csatlakozója van. Egy jobb megoldás, ha minden
+        processzort legfeljebb 4 másikkal kötünk
+        össze, így mindegyiknek elég 4 csatlakozó és könnyen
+        bővíthető is.
+        
+        Az összeköttetés lehetőségei:
+
+            - Teljesen összekötött (4 mag fölött nem éri meg)
+            - Ring ("1D tömb")
+            - Háló ("2D tömb")
+            - Csillag
+            - Bináris fa
+            - hyper-kocka
+
+
